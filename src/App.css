@@ -1,4 +1,3 @@
-
 h1 {
   /* align-items: center; */
   /* align-content: center; */
@@ -14,4 +13,8 @@ button {
 
 .demo-class {
   text-align: center;
+}
+
+.list-class {
+  justify-items: center;
 }

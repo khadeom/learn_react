@@ -18,3 +18,18 @@ button {
 .list-class {
   justify-items: center;
 }
+
+.button-class {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3,auto);
+  align-items: center;
+  justify-content: center;
+
+  margin: 20mm;
+  gap: 20px;
+
+}
+.my-button {
+  grid-row: 2;     /* place in row 2 */
+}

@@ -26,12 +26,13 @@ const ComponentDemo = (props) => {
           <li>Name: {emp.name}</li>
           <li>Salary: {emp.sal}</li>
         </ul>
-
+        <div class="button-class">
         <button onClick={()=>{setEmp({...emp, sal:emp.sal+5})}}> Increment 5</button>
         <button onClick={()=>{setEmp({...emp, sal:emp.sal+10})}}> Increment 10</button>
-        <button onClick={()=>{setEmp({...emp, sal:emp.sal-5})}}> Decrement 5</button>
-        <button onClick={()=>{setEmp({...emp, sal:emp.sal-10})}}> Decrement 10</button>
-        <button onClick={()=>{setEmp({...emp, sal:emp.sal-20})}}> Decrement 20</button>
+        <button class="my-button" onClick={()=>{setEmp({...emp, sal:emp.sal-5})}}> Decrement 5</button>
+        <button class="my-button" onClick={()=>{setEmp({...emp, sal:emp.sal-10})}}> Decrement 10</button>
+        <button class="my-button" onClick={()=>{setEmp({...emp, sal:emp.sal-20})}}> Decrement 20</button>
+        </div>
       </div>
     </div>
 

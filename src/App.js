@@ -1,20 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
-import Login, { Demo } from './day_one/Login';
-import ClassDemo from './day_one/ClassDemo';
-import ComponentDemo from './day_one/ComponentDemo';
-
-
+import ClassCom from './day_two/ClassComp' 
+import FuncComp2 from './day_two/FuncComp' 
+import Products from './day_two/Products';
+import FormDemo from './day_two/FormDemo';
 
 function App() {
   var con = {id:23, sal:3500, name:'om'}
   return (
     <div className="App">
       <h1>Hello World!</h1>
-      <Login location='India'></Login>
-      <ClassDemo></ClassDemo>
-      <Demo></Demo>
-      <ComponentDemo emp={con}></ComponentDemo>
+      <ClassCom></ClassCom>
+      <FuncComp2></FuncComp2>
+      <Products></Products>
+      <FormDemo></FormDemo>
     </div>
   );
 }

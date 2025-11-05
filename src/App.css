@@ -33,3 +33,7 @@ button {
 .my-button {
   grid-row: 2;     /* place in row 2 */
 }
+
+.App {
+  text-align: center;      /*align text inside elements */
+}

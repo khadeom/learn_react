@@ -16,8 +16,8 @@ function App() {
       {/* <FuncComp2></FuncComp2>
       <Products></Products>
       <FormDemo></FormDemo> */}
-    {/* <ControledForm></ControledForm> */}
-      <UnControledForm></UnControledForm>
+      <ControledForm></ControledForm>
+      {/* <UnControledForm></UnControledForm> */}
     </div>
   );
 }

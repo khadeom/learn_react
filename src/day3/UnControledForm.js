@@ -19,8 +19,10 @@ function UnControledForm() {
         console.log(`Type of event ${event}`)
         console.dir(event)
     }
+
   return (
-    <div>ControledForm
+    <div>
+        <h1>ControledForm</h1>
 
     <form onSubmit={handleSubmit}> 
         <lable htmlFor='name'>Name:</lable>

@@ -74,3 +74,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Uncontroled form -> react state user name
 controled form -> React form 
+
+
+home about emps products logout

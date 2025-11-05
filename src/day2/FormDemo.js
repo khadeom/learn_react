@@ -27,6 +27,11 @@ function FormDemo() {
         // setEmp([employees]) why cant we use this
         // alert(employees)
     }
+
+    function handleChange(event){
+        setName(event.target.value)
+    }
+
   return (
     <div>
 

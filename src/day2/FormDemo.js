@@ -22,7 +22,10 @@ function FormDemo() {
 
     function handleEmpSubmit(event){
         event.preventDefault()
-        alert(event.target.emp_id.value)
+        employees.push({empId:event.target.emp_id.value, empName: event.target.emp_name.value, salary: event.target.salary.value})
+        setEmp([...employees])
+        // setEmp([employees]) why cant we use this
+        // alert(employees)
     }
   return (
     <div>
@@ -43,7 +46,7 @@ function FormDemo() {
                         <td>{emp.empId}</td>
                         <td>{emp.empName}</td>
                         <td>{emp.salary}</td>
-                        <td><button onClick={()=>handleDelete(emp.productId)}>Delete</button></td>
+                        <td><button onClick={()=>handleDelete(emp.empId)}>Delete</button></td>
                     </tr>
                 ))
                 }            
@@ -55,9 +58,9 @@ function FormDemo() {
             <label for='emp_id'>Emp Id</label>
             <input id='emp_id' type="text"  ></input>
             <label>Emp Name</label>
-            <input id='emp_name' type="text"  onChange={(event)=>setName(event.target.value)}></input>
+            <input id='emp_name' type="text"></input>
             <label>Emp Salary</label>
-            <input id='emp_salary' type="text"  ></input>
+            <input id='salary' type="text"  ></input>
             <button type="submit">Submit</button>
         </form>
 

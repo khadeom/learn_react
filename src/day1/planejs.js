@@ -143,4 +143,7 @@ printDetails({
   hfa: '23'
 });
 
-
+console.log(a)
+// MAP
+b = a.map()
+console.log(b)

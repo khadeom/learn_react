@@ -6,15 +6,15 @@ import FormDemo from '../day2/FormDemo';
 import { RegisterComp } from '../day3/RegisterComp';
 import LoginComp from '../day3/LoginComp';
 import LogoutComp from '../day3/LogoutComp';
+import { useNavigate } from 'react-router-dom'
+import AboutUs from './AboutUs';
 const HomePage = () => {
   return <h1>Home Page</h1>;
 }
 
-const AboutUs = () => {
-  return <h1>About Us</h1>;
-}
 const NavBar = () => {
 
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(
     !!localStorage.getItem('isLoggedIn')
   );
@@ -27,6 +27,7 @@ const NavBar = () => {
     console.log('Updated the logout');
     localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
+    navigate('/');
   };
 
   const handleLogin = () => {
@@ -57,7 +58,9 @@ const NavBar = () => {
                 <Link className="nav-link active" to="/product">Products</Link> 
             </li>
             <li className="nav-item">
-                <Link className="nav-link active" to="/logout">Logout</Link>
+                <button className="nav-link active" onClick={
+                    handleLogout
+                }>Logout</button>
             </li>
           </>
         ) : (

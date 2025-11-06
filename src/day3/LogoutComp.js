@@ -11,13 +11,14 @@ const LogoutComp = (props) => {
     if (typeof props.onLogout === 'function') {
       try {
         props.onLogout();
+        alert('Logout Successful');
       } catch (e) {
         // ignore
       }
     }
-    // navigate to home after logout
+    // navigate to login after logout
     navigate('/');
-  }, [props, navigate]);
+  }, []);
 
   return (
     <div>

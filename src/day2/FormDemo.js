@@ -1,4 +1,6 @@
 import React from 'react'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import {useState} from 'react'
 // insted of import useState as its not a default function like React
 function FormDemo() {
@@ -22,7 +24,7 @@ function FormDemo() {
 
     function handleEmpSubmit(event){
         event.preventDefault()
-        employees.push({empId:event.target.emp_id.value, empName: event.target.emp_name.value, salary: event.target.salary.value})
+        employees.push({empId:event.target.formEmpId.value, empName: event.target.formEmpName.value, salary: event.target.formSalary.value})
         setEmp([...employees])
         // setEmp([employees]) why cant we use this
         // alert(employees)
@@ -59,23 +61,29 @@ function FormDemo() {
         </table>
         <b></b>
         <h2>Employee Form</h2>
-        <form onSubmit={handleEmpSubmit}>
-            <label for='emp_id'>Emp Id</label>
-            <input id='emp_id' type="text"  ></input>
-            <label>Emp Name</label>
-            <input id='emp_name' type="text"></input>
-            <label>Emp Salary</label>
-            <input id='salary' type="text"  ></input>
-            <button type="submit">Submit</button>
-        </form>
+        
+        <div className='d-flex justify-content-center mb-3'>
+        <Form onSubmit={handleEmpSubmit} style={{ width: '100%', maxWidth: 420 }}>
+            <Form.Group className="mb-3" controlId="formEmpId">
+                <Form.Label>Employee ID</Form.Label>
+                <Form.Control type="text" placeholder="Enter Employee ID" />
+            </Form.Group>
 
-        {/* <form onSubmit={handleSubmit}>
-            <lable for='name_input'>Name:</lable>
-            <input id='name_input' type="text" value={name} onChange={(event)=>setName(event.target.value)}></input>
-            <p>Your name is: {name}</p>
-            <button type="submit">Submit</button>
-        </form> */}
+            <Form.Group className="mb-3" controlId="formEmpName">
+                <Form.Label>Employee Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter Employee Name" />
+            </Form.Group>
 
+            <Form.Group className="mb-3" controlId="formSalary">
+                <Form.Label>Salary</Form.Label>
+                <Form.Control type="text" placeholder="Enter Salary" />
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>
+        </Form>
+        </div>
     </div>
   )
 }

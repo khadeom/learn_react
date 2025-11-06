@@ -8,6 +8,9 @@ import LoginComp from '../day3/LoginComp';
 import LogoutComp from '../day3/LogoutComp';
 import { useNavigate } from 'react-router-dom'
 import AboutUs from './AboutUs';
+import Employees from './Employees';
+import AddEmployee from './AddEmployee';
+
 const HomePage = () => {
   return <h1>Home Page</h1>;
 }
@@ -52,7 +55,7 @@ const NavBar = () => {
                 <Link className="nav-link active" to="/about">About Us</Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link active" to="/employes">Employee</Link> 
+                <Link className="nav-link active" to="/employees">Employees</Link> 
             </li>
             <li className="nav-item">
                 <Link className="nav-link active" to="/product">Products</Link> 
@@ -81,12 +84,13 @@ const NavBar = () => {
         <Route path='/' element={<LoginComp onLogin={handleLogin} />}></Route>
         <Route path='/home' element={<HomePage/>}></Route>
         <Route path='/about' element={<AboutUs/>}></Route>
-        <Route path='/employes' element={<FormDemo/>}></Route>
+        <Route path='/employees' element={<Employees/>}></Route>
         <Route path='/product' element={<ProductComp/>}></Route>
         <Route path='/products/:id' element={<ProductDetails/>}></Route>
         <Route path='/login' element={<LoginComp onLogin={handleLogin} />}></Route>
         <Route path='/logout' element={<LogoutComp onLogout={handleLogout} />}></Route>
         <Route path='/register' element={<RegisterComp/>}></Route>
+        <Route path='/addemp' element={<AddEmployee/>}></Route>
       </Routes>
     </div>
   )

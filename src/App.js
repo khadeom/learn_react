@@ -32,7 +32,7 @@ function App() {
           <Link to="/about">About Us</Link> |{" "}
           <Link to="/employes">Employee</Link> |{" "}
           <Link to="/product">Products</Link> |{" "}
-          <Link to="/logout">Logout</Link>
+          <Link to="/" onClick={handleLogout}>Logout</Link>
           <Link to="/">Home</Link> |{" "}
           </>
         ) : (

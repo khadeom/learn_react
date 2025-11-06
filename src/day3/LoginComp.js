@@ -7,7 +7,7 @@ const LoginComp = () => {
     const [password, setPassword] = useState('')    
     const navigate = useNavigate();
     const handleSubmit = (event)=>{
-        event.preventDefault()
+        // event.preventDefault()
         // const [username, password] = 
         const username = event.target.username.value
         const password = event.target.password.value

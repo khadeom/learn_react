@@ -1,37 +1,64 @@
 import React, { useState } from 'react'
-import { redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 export const RegisterComp = () => {
-    const [username, setUsername] = useState('')    
-    const [password, setPassword] = useState('')    
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
 
-    const handleSubmit = (event)=>{
-        // const [username, password] = 
-        const username = event.target.username.value
-        const password = event.target.password.value
-        
-        if (localStorage.getItem(username)){
-            alert(`Username: ${username} already exists`);
-        }else{
-            localStorage.setItem(username, password)
-            // redirect to login page
-            redirect('/login')
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const user = username.trim()
+        const pass = password
+
+        if (!user) {
+            alert('Please enter a username')
+            return
         }
 
+        if (localStorage.getItem(user)) {
+            alert(`Username: ${user} already exists`)
+        } else {
+            localStorage.setItem(user, pass)
+            alert('Registration successful — please login')
+            navigate('/login')
+        }
     }
 
-  return (
-    <div>
-        <h2>Register Page</h2>
+    return (
+        <div>
+            <h2>Register Page</h2>
+            <div className="d-flex justify-content-center mt-3">
+                <div style={{ width: '100%', maxWidth: 420 }}>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="regUsername">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        </Form.Group>
 
-        <form onSubmit={handleSubmit}>
-            <lable htmlFor='username'>Username: </lable>
-            <input type='text' name='username' value={username} onChange={(event)=>setUsername(event.target.value)}></input>
-            <lable htmlFor='password'>Password: </lable>
-            <input type='text' name='password' value={password} onChange={(event)=>setPassword(event.target.value)}></input>
-            <button type='submit'>Submit</button>
-        </form>
-    
-    </div>
-  )
+                        <Form.Group className="mb-3" controlId="regPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </Form.Group>
+
+                        <Button variant="primary" type="submit">
+                            Register
+                        </Button>
+                    </Form>
+                </div>
+            </div>
+        </div>
+    )
 }

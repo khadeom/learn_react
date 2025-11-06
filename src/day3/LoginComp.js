@@ -1,6 +1,8 @@
 import React from 'react'
-import { useState, redirect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 const LoginComp = (props) => {
     const [username, setUsername] = useState('')    
@@ -10,15 +12,15 @@ const LoginComp = (props) => {
     const handleSubmit = (event)=>{
         event.preventDefault()
         // const [username, password] = 
-        const username = event.target.username.value
-        const password = event.target.password.value
+                const user = username.trim()
+                const pass = password
 
-        if (!localStorage.getItem(username)){
+        if (!localStorage.getItem(user)){
             alert(`Username does not exist`);
         }else{
-            const stored_password=localStorage.getItem(username)
-            if (password==stored_password){
-                localStorage.setItem('isLoggedIn', true)
+            const stored_password=localStorage.getItem(user)
+            if (pass==stored_password){
+                localStorage.setItem('isLoggedIn', 'true')
                 
                 if (typeof props.onLogin === 'function') {
                 try {
@@ -28,24 +30,45 @@ const LoginComp = (props) => {
                 }
                 }
                 alert('Login Successful')   
-                navigate('/home')
+                                navigate('/home')
             }else{
               alert('Invalid Password')
             }
-            // redirect to login page
-            // redirect('/')
         }
     }
-  return (
-    <div>
-        <h1>Login Page</h1>
-        <form onSubmit={handleSubmit}>
-            <lable htmlFor='username'>Username: </lable>
-            <input type='text' name='username' value={username} onChange={(event)=>setUsername(event.target.value)}></input>
-            <lable htmlFor='password'>Password: </lable>
-            <input type='text' name='password' value={password} onChange={(event)=>setPassword(event.target.value)}></input>
-            <button type='submit'>Submit</button>
-        </form>
+    return (
+        <div>
+            <h1>Login Page</h1>
+            {/* center the form and constrain width so inputs don't stretch edge-to-edge */}
+            <div className="d-flex justify-content-center mt-3">
+                <div style={{ width: '100%', maxWidth: 420 }}>
+                    <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="formUsername">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Form.Group>
+
+                                    <Button variant="primary" type="submit">
+                                        Submit
+                                    </Button>
+                                </Form>
+                            </div>
+                        </div>
     </div>
   )
 }

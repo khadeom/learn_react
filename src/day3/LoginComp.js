@@ -2,12 +2,13 @@ import React from 'react'
 import { useState, redirect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const LoginComp = () => {
+const LoginComp = (props) => {
     const [username, setUsername] = useState('')    
     const [password, setPassword] = useState('')    
     const navigate = useNavigate();
+    console.log('LoginComp props=', props);
     const handleSubmit = (event)=>{
-        // event.preventDefault()
+        event.preventDefault()
         // const [username, password] = 
         const username = event.target.username.value
         const password = event.target.password.value
@@ -18,8 +19,16 @@ const LoginComp = () => {
             const stored_password=localStorage.getItem(username)
             if (password==stored_password){
                 localStorage.setItem('isLoggedIn', true)
+                
+                if (typeof props.onLogin === 'function') {
+                try {
+                    props.onLogin()
+                } catch (e) {
+                    // ignore
+                }
+                }
                 alert('Login Successful')   
-                navigate('/')
+                navigate('/home')
             }else{
               alert('Invalid Password')
             }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import { useState, useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom';
 import { ProductComp, ProductDetails } from '../day3/ProductComp';
@@ -10,10 +10,30 @@ import { useNavigate } from 'react-router-dom'
 import AboutUs from './AboutUs';
 import Employees from './Employees';
 import AddEmployee from './AddEmployee';
+import UsersComp from './UsersComp';
+import EditUser from './EditUser';
+import AddUser from './AddUser';
+import { MyContext } from '../day5/Context'
+import withAuth from '../day5/Components/WithAuth';
+
+
+
 
 const HomePage = () => {
   return <h1>Home Page</h1>;
 }
+
+const ProtectedAddUser = withAuth(AddUser)
+const ProtectedHome = withAuth(HomePage)
+const ProtectedEmployee =  withAuth(Employees)
+const ProtectedUsersComp = withAuth(UsersComp)
+const ProtectedAddEmployee = withAuth(AddEmployee)
+const ProtectedAboutUs = withAuth(AboutUs)
+const ProtectedEditUser = withAuth(EditUser)
+const ProtectedProductComp  = withAuth(ProductComp)
+const ProtectedProductDetails = withAuth(ProductDetails) 
+
+
 
 const NavBar = () => {
 
@@ -40,8 +60,13 @@ const NavBar = () => {
     setIsLoggedIn(true);
   };
 
+  const  {id, name} = useContext(MyContext) 
+  // const commonData = useContext(MyContext) 
   return (
     <div>
+
+      {/* <h2>Id: {id} </h2> */}
+      {/* <h2>Common data {commonData} </h2> */}
       <nav className="navbar navbar-expand-sm bg-light">
 
         <div className="container-fluid">
@@ -61,6 +86,9 @@ const NavBar = () => {
                 <Link className="nav-link active" to="/product">Products</Link> 
             </li>
             <li className="nav-item">
+                <Link className="nav-link active" to="/users">Users</Link> 
+            </li>
+            <li className="nav-item">
                 <button className="nav-link active" onClick={
                     handleLogout
                 }>Logout</button>
@@ -78,19 +106,23 @@ const NavBar = () => {
         )}
           </ul>
         </div>
+
       </nav>
 
       <Routes>
         <Route path='/' element={<LoginComp onLogin={handleLogin} />}></Route>
-        <Route path='/home' element={<HomePage/>}></Route>
-        <Route path='/about' element={<AboutUs/>}></Route>
-        <Route path='/employees' element={<Employees/>}></Route>
-        <Route path='/product' element={<ProductComp/>}></Route>
-        <Route path='/products/:id' element={<ProductDetails/>}></Route>
+        <Route path='/home' element={<ProtectedHome/>}></Route>
+        <Route path='/about' element={<ProtectedAboutUs/>}></Route>
+        <Route path='/employees' element={<ProtectedEmployee/>}></Route>
+        <Route path='/product' element={<ProtectedProductComp/>}></Route>
+        <Route path='/products/:id' element={<ProtectedProductDetails/>}></Route>
         <Route path='/login' element={<LoginComp onLogin={handleLogin} />}></Route>
         <Route path='/logout' element={<LogoutComp onLogout={handleLogout} />}></Route>
         <Route path='/register' element={<RegisterComp/>}></Route>
-        <Route path='/addemp' element={<AddEmployee/>}></Route>
+        <Route path='/addemp' element={<ProtectedAddEmployee/>}></Route>
+        <Route path='/users' element={<ProtectedUsersComp/>}></Route>
+        <Route path='/users/:id' element={<ProtectedEditUser/>}></Route>
+        <Route path='/adduser' element={<ProtectedAddUser/>}></Route>
       </Routes>
     </div>
   )

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../day5/Context';
 
 export default function AboutUs() {
+  // const { commonData } = useContext(Context) 
+
   return (
     <div className="container py-5">
+      {/* <h2>Common Data {commonData}</h2> */}
       <div className="bg-light p-4 rounded-3 shadow-sm mb-4">
         <div className="row align-items-center">
           <div className="col-md-8">

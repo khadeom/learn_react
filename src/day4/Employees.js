@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Employees() {
   const [employees, setEmployees] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const baseUrl = 'http://localhost:5004/employees';
+  const baseUrl = 'http://localhost:5001/employees';
 
   useEffect(() => {
     axios.get(baseUrl)

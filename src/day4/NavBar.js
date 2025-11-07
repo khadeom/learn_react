@@ -15,6 +15,8 @@ import EditUser from './EditUser';
 import AddUser from './AddUser';
 import { MyContext } from '../day5/Context'
 import withAuth from '../day5/Components/WithAuth';
+import { MemoComp } from '../day5/MemoComp';
+import LoginSalt from '../day5/LoginSalt';
 
 
 
@@ -89,6 +91,9 @@ const NavBar = () => {
                 <Link className="nav-link active" to="/users">Users</Link> 
             </li>
             <li className="nav-item">
+                <Link className="nav-link active" to="/memo">Memo</Link> 
+            </li>
+            <li className="nav-item">
                 <button className="nav-link active" onClick={
                     handleLogout
                 }>Logout</button>
@@ -110,7 +115,7 @@ const NavBar = () => {
       </nav>
 
       <Routes>
-        <Route path='/' element={<LoginComp onLogin={handleLogin} />}></Route>
+        <Route path='/' element={<LoginSalt />}></Route>
         <Route path='/home' element={<ProtectedHome/>}></Route>
         <Route path='/about' element={<ProtectedAboutUs/>}></Route>
         <Route path='/employees' element={<ProtectedEmployee/>}></Route>
@@ -123,6 +128,7 @@ const NavBar = () => {
         <Route path='/users' element={<ProtectedUsersComp/>}></Route>
         <Route path='/users/:id' element={<ProtectedEditUser/>}></Route>
         <Route path='/adduser' element={<ProtectedAddUser/>}></Route>
+        <Route path='/memo' element={<MemoComp/>}></Route>
       </Routes>
     </div>
   )
